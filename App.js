@@ -25,6 +25,27 @@ const App = () => {
     setFormState({ ...formState, [key]: value })
   }
 
+  const getTodos = () => {
+    try {
+      const todoData = await API.graphql(graphqlOperation(listTodos))
+      //setTodos
+      const todos = todoData.data.listTodos.items
+      setTodos(todos)
+    } catch (error) {
+      console.log('error fetching todos')
+    }
+  }
+
+  const addTodo = () => {
+    try {
+      const todo = { ...formState }
+      setTodos(...todos, todo)
+      setFormState(initialState)
+      await API.graphql(graphqlOperation(createTodo, { input: todo }))
+    } catch (err) {
+      console.log('error creating todo:', err)
+    }
+  }
 
   return (
     <View style={styles.container}>
