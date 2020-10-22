@@ -1,0 +1,15 @@
+projects:
+  rnAmplifyApi:
+    schemaPath: amplify/backend/api/rnAmplifyApi/build/schema.graphql
+    includes:
+      - 'Y'
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: /graphql
+extensions:
+  amplify:
+    version: 3
